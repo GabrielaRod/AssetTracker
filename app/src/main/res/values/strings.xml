@@ -3,4 +3,12 @@
     <string name="login">Login</string>
     <string name="password">Password</string>
     <string name="email">Email</string>
+    <string name="firstname">First Name</string>
+    <string name="lastname">Last Name</string>
+    <string name="domid">ID</string>
+    <string name="address">Address</string>
+    <string name="city">City</string>
+    <string name="phonenumber">Phone Number</string>
+    <string name="password">Password</string>
+    <string name="password">Password</string>
 </resources>
