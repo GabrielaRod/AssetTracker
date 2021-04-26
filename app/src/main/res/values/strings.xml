@@ -11,7 +11,7 @@
     <string name="phonenumber">Phone Number</string>
     <string name="loginhere">Already have an Account? <u>Login</u></string>
     <string name="signup">Sign Up</string>
-    <string name="signuphere">Create new account? Sign Up</string>
+    <string name="signuphere">Create new account? <u>Sign Up</u></string>
     <string name="signuppassword">Password</string>
     <string name="sign_up">Sign Up</string>
 </resources>

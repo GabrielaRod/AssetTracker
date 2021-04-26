@@ -221,6 +221,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@+id/buttonSignUp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textInputLayoutPassword" />
@@ -230,10 +231,11 @@
             style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="9dp"
+            android:layout_marginTop="30dp"
             android:text="@string/signup"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayoutPassword"
-            tools:layout_editor_absoluteX="159dp" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayoutPassword" />
 
         <TextView
             android:id="@+id/loginText"
@@ -242,8 +244,9 @@
             android:layout_marginTop="8dp"
             android:fontFamily="@font/poppinsmedium"
             android:text="@string/loginhere"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/buttonSignUp"
-            tools:layout_editor_absoluteX="92dp"
             tools:targetApi="jelly_bean" />
 
 
