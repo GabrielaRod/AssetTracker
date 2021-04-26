@@ -8,14 +8,14 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
-        android:layout_width="407dp"
-        android:layout_height="561dp"
+        android:layout_width="412dp"
+        android:layout_height="633dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.402">
+        app:layout_constraintVertical_bias="0.714">
 
         <!--First name field-->
         <com.google.android.material.textfield.TextInputLayout
@@ -24,6 +24,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
             android:layout_marginLeft="30dp"
+            android:layout_marginTop="5dp"
             android:layout_marginEnd="30dp"
             android:layout_marginRight="30dp"
             android:hint="@string/firstname"
@@ -49,6 +50,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
             android:layout_marginLeft="30dp"
+            android:layout_marginTop="5dp"
             android:layout_marginEnd="30dp"
             android:layout_marginRight="30dp"
             android:hint="@string/lastname"
@@ -72,6 +74,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
+            android:layout_marginTop="5dp"
             android:layout_marginRight="30dp"
             android:hint="@string/domid"
             app:layout_constraintEnd_toEndOf="parent"
@@ -95,6 +98,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
+            android:layout_marginTop="5dp"
             android:layout_marginRight="30dp"
             android:hint="@string/address"
             app:layout_constraintEnd_toEndOf="parent"
@@ -118,6 +122,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
+            android:layout_marginTop="5dp"
             android:layout_marginRight="30dp"
             android:hint="@string/city"
             app:layout_constraintEnd_toEndOf="parent"
@@ -141,6 +146,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
+            android:layout_marginTop="5dp"
             android:layout_marginRight="30dp"
             android:hint="@string/phonenumber"
             app:layout_constraintEnd_toEndOf="parent"
@@ -164,6 +170,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
+            android:layout_marginTop="5dp"
             android:layout_marginRight="30dp"
             android:hint="@string/email"
             app:layout_constraintEnd_toEndOf="parent"
@@ -189,9 +196,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
             android:layout_marginLeft="30dp"
+            android:layout_marginTop="5dp"
             android:layout_marginEnd="30dp"
             android:layout_marginRight="30dp"
-            android:hint="@string/password"
+            android:hint="@string/signuppassword"
             android:visibility="visible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -224,18 +232,20 @@
             style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="9dp"
             android:text="@string/signup"
             app:layout_constraintTop_toBottomOf="@+id/textInputLayoutPassword"
-            tools:layout_editor_absoluteX="132dp" />
+            tools:layout_editor_absoluteX="159dp" />
 
         <TextView
             android:id="@+id/loginText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             android:fontFamily="@font/poppinsmedium"
             android:text="@string/loginhere"
             app:layout_constraintTop_toBottomOf="@+id/buttonSignUp"
-            tools:layout_editor_absoluteX="140dp"
+            tools:layout_editor_absoluteX="92dp"
             tools:targetApi="jelly_bean" />
 
 
@@ -247,7 +257,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/poppinsbold"
         android:gravity="center"
-        android:text="Sign Up"
+        android:text="@string/sign_up"
         android:textColor="@color/purple_500"
         android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@+id/constraintLayout"

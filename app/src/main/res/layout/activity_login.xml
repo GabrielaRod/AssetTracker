@@ -7,14 +7,15 @@
     tools:context=".Login">
 
     <TextView
+        android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="36dp"
-        android:text="@string/login"
+        android:fontFamily="@font/poppinsbold"
         android:gravity="center"
+        android:text="@string/login"
         android:textColor="@color/purple_500"
         android:textSize="30dp"
-        android:fontFamily="@font/poppinsbold"
         app:layout_constraintBottom_toTopOf="@+id/textInputLayout4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -36,9 +37,9 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:drawableEnd="@drawable/ic_email"
             android:drawableRight="@drawable/ic_email"
-            android:fontFamily="@font/poppinsbold"
-            android:drawableEnd="@drawable/ic_email" />
+            android:fontFamily="@font/poppinsbold" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -58,12 +59,13 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:drawableEnd="@drawable/ic_password"
             android:drawableRight="@drawable/ic_password"
-            android:fontFamily="@font/poppinsbold"
-            android:drawableEnd="@drawable/ic_password" />
+            android:fontFamily="@font/poppinsbold" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
+        android:id="@+id/button"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -73,5 +75,16 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout5" />
+
+    <TextView
+        android:id="@+id/signUpText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppinsmedium"
+        android:text="@string/signuphere"
+        app:layout_constraintTop_toBottomOf="@+id/button"
+        tools:layout_editor_absoluteX="101dp"
+        android:layout_marginTop="56dp"
+        tools:targetApi="jelly_bean" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
