@@ -15,4 +15,23 @@
     <string name="signuppassword">Password</string>
     <string name="sign_up">Sign Up</string>
     <string name="welcome">Welcome</string>
+    <string name="vin">VIN</string>
+    <string name="make">Make</string>
+    <string name="model">Model</string>
+    <string name="year">Year</string>
+    <string name="color">Color</string>
+    <string name="submit">Submit</string>
+    <string name="cancel">Cancel</string>
+    <string name="tag_id">Tag ID</string>
+    <string name="asset_registration">Asset Registration</string>
+    <string-array name="type">
+        <item>SUV</item>
+        <item>Sedan</item>
+        <item>Coupe</item>
+        <item>Sport Car</item>
+        <item>Station Wagon</item>
+        <item>Hatchback</item>
+        <item>Minivan</item>
+        <item>Pickup Truck</item>
+    </string-array>
 </resources>
