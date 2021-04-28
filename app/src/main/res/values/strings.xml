@@ -14,16 +14,16 @@
     <string name="signuphere">Create new account? <u>Sign Up</u></string>
     <string name="signuppassword">Password</string>
     <string name="sign_up">Sign Up</string>
-    <string name="welcome">Welcome</string>
+    <string name="welcome">Welcome, please press the button below to Register an Asset</string>
     <string name="vin">VIN</string>
     <string name="make">Make</string>
     <string name="model">Model</string>
     <string name="year">Year</string>
-    <string name="color">Color</string>
     <string name="submit">Submit</string>
     <string name="cancel">Cancel</string>
     <string name="tag_id">Tag ID</string>
     <string name="asset_registration">Asset Registration</string>
+    <string name="register">Register</string>
     <string-array name="type">
         <item>SUV</item>
         <item>Sedan</item>
@@ -33,5 +33,18 @@
         <item>Hatchback</item>
         <item>Minivan</item>
         <item>Pickup Truck</item>
+    </string-array>
+
+    <string-array name="color">
+        <item>Black</item>
+        <item>White</item>
+        <item>Grey</item>
+        <item>Silver</item>
+        <item>Gold</item>
+        <item>Blue</item>
+        <item>Red</item>
+        <item>Green</item>
+        <item>Yellow</item>
+        <item>Orange</item>
     </string-array>
 </resources>

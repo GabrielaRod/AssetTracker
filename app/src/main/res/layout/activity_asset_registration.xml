@@ -111,32 +111,34 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <!--Color drop down-->
-
-        <!--Type drop down-->
         <Spinner
             android:id="@+id/colortype"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="4dp"
             android:layout_marginEnd="30dp"
             android:layout_marginRight="30dp"
+            android:drawableEnd="@drawable/ic_dropdown"
+            android:drawableRight="@drawable/ic_dropdown"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textInputLayoutYear" />
 
 
-        <!--Tag ID field-->
+        <!--Type drop down-->
         <Spinner
             android:id="@+id/typespinner"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="4dp"
             android:layout_marginEnd="30dp"
             android:layout_marginRight="30dp"
+            android:drawableEnd="@drawable/ic_dropdown"
+            android:drawableRight="@drawable/ic_dropdown"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/colortype" />
@@ -164,11 +166,10 @@
 
 
         <ProgressBar
-            android:id="@+id/progress"
+            android:id="@+id/progressasset"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:visibility="gone"
-            app:layout_constraintBottom_toTopOf="@+id/buttonSignUp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textInputLayoutTag" />
@@ -185,7 +186,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.222"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/progress" />
+            app:layout_constraintTop_toBottomOf="@+id/progressasset" />
 
         <Button
             android:id="@+id/cancel"
@@ -199,7 +200,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.777"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/progress" />
+            app:layout_constraintTop_toBottomOf="@+id/progressasset" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
