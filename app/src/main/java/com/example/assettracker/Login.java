@@ -77,7 +77,7 @@ public class Login extends AppCompatActivity {
                                     String result = putData.getResult();
                                     Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
                                     if(result.equals("Login Success")){
-                                        Intent intent = new Intent(getApplicationContext(), MainActivity.class); //If success it will take you to MainActivity
+                                        Intent intent = new Intent(getApplicationContext(), MainActivity2.class); //If success it will take you to MainActivity
                                         startActivity(intent);
                                         finish();
                                     }

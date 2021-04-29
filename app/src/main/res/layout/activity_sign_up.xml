@@ -40,6 +40,7 @@
                 android:drawableEnd="@drawable/ic_person"
                 android:drawableRight="@drawable/ic_person"
                 android:fontFamily="@font/poppinsmedium"
+                android:inputType="textPersonName"
                 tools:targetApi="jelly_bean" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -65,6 +66,7 @@
                 android:drawableEnd="@drawable/ic_person"
                 android:drawableRight="@drawable/ic_person"
                 android:fontFamily="@font/poppinsmedium"
+                android:inputType="textPersonName"
                 tools:targetApi="jelly_bean" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -87,6 +89,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppinsmedium"
+                android:inputType="number"
                 tools:targetApi="jelly_bean" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -111,6 +114,7 @@
                 android:drawableEnd="@drawable/ic_address"
                 android:drawableRight="@drawable/ic_address"
                 android:fontFamily="@font/poppinsmedium"
+                android:inputType="textPostalAddress"
                 tools:targetApi="jelly_bean" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -135,6 +139,7 @@
                 android:drawableEnd="@drawable/ic_city"
                 android:drawableRight="@drawable/ic_city"
                 android:fontFamily="@font/poppinsmedium"
+                android:inputType="textPostalAddress"
                 tools:targetApi="jelly_bean" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -159,6 +164,7 @@
                 android:drawableEnd="@drawable/ic_phone"
                 android:drawableRight="@drawable/ic_phone"
                 android:fontFamily="@font/poppinsmedium"
+                android:inputType="phone"
                 tools:targetApi="jelly_bean" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -183,6 +189,7 @@
                 android:drawableEnd="@drawable/ic_email"
                 android:drawableRight="@drawable/ic_email"
                 android:fontFamily="@font/poppinsmedium"
+                android:inputType="textEmailAddress"
                 tools:targetApi="jelly_bean" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -207,10 +214,10 @@
                 android:id="@+id/password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPassword"
                 android:drawableEnd="@drawable/ic_password"
                 android:drawableRight="@drawable/ic_password"
                 android:fontFamily="@font/poppinsmedium"
+                android:inputType="textPassword|textWebPassword"
                 android:visibility="visible"
                 app:layout_constraintTop_toBottomOf="@+id/textInputLayoutEmail"
                 tools:layout_editor_absoluteX="29dp"

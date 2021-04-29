@@ -63,6 +63,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppinsmedium"
+                android:inputType="text"
                 tools:targetApi="jelly_bean" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -107,14 +108,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppinsmedium"
+                android:inputType="number"
                 tools:targetApi="jelly_bean" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <!--Color drop down-->
         <Spinner
             android:id="@+id/colortype"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
             android:layout_marginStart="30dp"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="4dp"
@@ -122,16 +124,18 @@
             android:layout_marginRight="30dp"
             android:drawableEnd="@drawable/ic_dropdown"
             android:drawableRight="@drawable/ic_dropdown"
+            android:entries="@array/color"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textInputLayoutYear" />
 
 
         <!--Type drop down-->
+
         <Spinner
             android:id="@+id/typespinner"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
             android:layout_marginStart="30dp"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="4dp"
@@ -139,7 +143,9 @@
             android:layout_marginRight="30dp"
             android:drawableEnd="@drawable/ic_dropdown"
             android:drawableRight="@drawable/ic_dropdown"
+            android:entries="@array/type"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/colortype" />
 

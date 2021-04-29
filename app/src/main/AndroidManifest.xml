@@ -12,11 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Design.Light.NoActionBar"
         android:usesCleartextTraffic="true">
-        <activity android:name=".MainActivity"></activity>
         <!-- Login goes first -->
-        <activity
-            android:name=".AssetRegistration"
-            android:theme="@style/Theme.Design.Light.NoActionBar" />
         <activity
             android:name=".Login"
             android:theme="@style/Theme.Design.Light.NoActionBar">
@@ -28,6 +24,9 @@
         </activity>
         <activity
             android:name=".SignUp"
+            android:theme="@style/Theme.Design.Light.NoActionBar" />
+        <activity
+            android:name=".AssetRegistration"
             android:theme="@style/Theme.Design.Light.NoActionBar" />
         <activity android:name=".MainActivity2" />
     </application>
