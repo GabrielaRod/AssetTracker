@@ -12,6 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Design.Light.NoActionBar"
         android:usesCleartextTraffic="true">
+        <!-- <activity android:name=".Alert"></activity> -->
         <!-- Login goes first -->
         <activity
             android:name=".Login"

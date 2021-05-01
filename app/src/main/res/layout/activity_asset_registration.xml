@@ -113,8 +113,9 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <!--Color drop down-->
+
         <Spinner
-            android:id="@+id/colortype"
+            android:id="@+id/color_spinner"
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:layout_marginStart="30dp"
@@ -129,11 +130,9 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textInputLayoutYear" />
 
-
         <!--Type drop down-->
-
         <Spinner
-            android:id="@+id/typespinner"
+            android:id="@+id/type_spinner"
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:layout_marginStart="30dp"
@@ -141,13 +140,13 @@
             android:layout_marginTop="4dp"
             android:layout_marginEnd="30dp"
             android:layout_marginRight="30dp"
+            android:entries="@array/type"
             android:drawableEnd="@drawable/ic_dropdown"
             android:drawableRight="@drawable/ic_dropdown"
-            android:entries="@array/type"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/colortype" />
+            app:layout_constraintTop_toBottomOf="@id/color_spinner" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputLayoutTag"
@@ -160,7 +159,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/typespinner">
+            app:layout_constraintTop_toBottomOf="@+id/type_spinner">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/tag"

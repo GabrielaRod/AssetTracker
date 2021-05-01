@@ -24,14 +24,14 @@ public class AssetRegistration extends AppCompatActivity {
         Button buttonSubmit;
         Button buttonCancel;
         ProgressBar progressBar;
-        Spinner type, color;
+        Spinner color, type;
         String typechoice, colorchoice;
 
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_sign_up);
+            setContentView(R.layout.activity_asset_registration);
 
             /*To set the variables for the input data*/
             textInputEditTextVin = findViewById(R.id.vin);
@@ -41,33 +41,15 @@ public class AssetRegistration extends AppCompatActivity {
             textInputEditTextTag = findViewById(R.id.tag);
 
             /*Spinners (Drop Down Menu's)*/
-            type = findViewById(R.id.typespinner);
-            color = findViewById(R.id.colortype);
+            color = findViewById(R.id.color_spinner);
+            type = findViewById(R.id.type_spinner);
 
-            /*type*/
-            ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.type, android.R.layout.simple_spinner_item);
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            type.setAdapter(adapter);
-
-            //type.setOnItemSelectedListener(this);
-            type.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener () {
-                @Override
-                public void onItemSelected (AdapterView<?>adapterView, View view, int i, long l) {
-                    typechoice = adapterView.getItemAtPosition(i).toString();
-                    Toast.makeText(getApplicationContext(), typechoice, Toast.LENGTH_SHORT).show();
-                }
-                @Override
-                public void onNothingSelected (AdapterView<?>adapterView) {
-                    Toast.makeText(getApplicationContext(), "This field is required", Toast.LENGTH_SHORT).show();
-                }
-            });
 
             /*color*/
             ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(this, R.array.color, android.R.layout.simple_spinner_item);
             adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             color.setAdapter(adapter2);
 
-            //color.setOnItemSelectedListener(this);
             color.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener () {
                 @Override
                 public void onItemSelected (AdapterView<?>adapterView, View view, int i, long l) {
@@ -80,9 +62,27 @@ public class AssetRegistration extends AppCompatActivity {
                 }
             });
 
+            /*type*/
+            ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.type, android.R.layout.simple_spinner_item);
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            type.setAdapter(adapter);
+
+            type.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener () {
+                @Override
+                public void onItemSelected (AdapterView<?>adapterView, View view, int i, long l) {
+                    typechoice = adapterView.getItemAtPosition(i).toString();
+                    Toast.makeText(getApplicationContext(), typechoice, Toast.LENGTH_SHORT).show();
+                }
+                @Override
+                public void onNothingSelected (AdapterView<?>adapterView) {
+                    Toast.makeText(getApplicationContext(), "This field is required", Toast.LENGTH_SHORT).show();
+                }
+            });
+
+
             buttonSubmit = findViewById(R.id.submit);
             buttonCancel = findViewById(R.id.cancel);
-            progressBar = findViewById(R.id.progress);
+            progressBar = findViewById(R.id.progressasset);
 
 
             /*On click listener for the Cancel button in case the user wants to cancel registration*/
@@ -101,18 +101,18 @@ public class AssetRegistration extends AppCompatActivity {
                 public void onClick(View v) {
 
                     /*Getting the data from the input variables*/
-                    String vin, make, model, year, tagid, type, color;
+                    String vin, make, model, year, tagid, cartype, carcolor;
                     vin = String.valueOf(textInputEditTextVin.getText());
                     make = String.valueOf(textInputEditTextMake.getText());
                     model = String.valueOf(textInputEditTextModel.getText());
                     year = String.valueOf(textInputEditTextYear.getText());
                     tagid = String.valueOf(textInputEditTextTag.getText());
-                    type = typechoice;
-                    color = colorchoice;
+                    cartype = String.valueOf(type);
+                    carcolor = String.valueOf(color);
 
 
                     /*Error handling, if the fields are empty it will show Toast*/
-                    if(!vin.equals("") && !make.equals("") && !model.equals("") && !year.equals("") && !color.equals("") && !type.equals("") && !tagid.equals("")){
+                    if(!vin.equals("") && !make.equals("") && !model.equals("") && !year.equals("") && !carcolor.equals("") && !cartype.equals("") && !tagid.equals("")){
 
                         progressBar.setVisibility(View.VISIBLE);
                         Handler handler = new Handler(Looper.getMainLooper());
@@ -137,8 +137,8 @@ public class AssetRegistration extends AppCompatActivity {
                                 data[1] = make;
                                 data[2] = model;
                                 data[3] = year;
-                                data[4] = type;
-                                data[5] = color;
+                                data[4] = carcolor;
+                                data[5] = cartype;
                                 data[6] = tagid;
 
                                 Log.v("log", data[4]);
