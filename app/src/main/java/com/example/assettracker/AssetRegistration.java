@@ -1,12 +1,9 @@
 package com.example.assettracker;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -14,6 +11,8 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.vishnusivadas.advanced_httpurlconnection.PutData;
@@ -25,7 +24,8 @@ public class AssetRegistration extends AppCompatActivity {
         Button buttonCancel;
         ProgressBar progressBar;
         Spinner color, type;
-        String typechoice, colorchoice;
+        String typechoice, colorchoice, sessionemail;
+        SessionManager sessionManager;
 
 
         @Override
@@ -44,6 +44,9 @@ public class AssetRegistration extends AppCompatActivity {
             color = findViewById(R.id.color_spinner);
             type = findViewById(R.id.type_spinner);
 
+            /*Initializing SessionManager and Get Email*/
+            sessionManager = new SessionManager(getApplicationContext());
+            sessionemail = sessionManager.getEmail();
 
             /*color*/
             ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(this, R.array.color, android.R.layout.simple_spinner_item);
@@ -101,14 +104,15 @@ public class AssetRegistration extends AppCompatActivity {
                 public void onClick(View v) {
 
                     /*Getting the data from the input variables*/
-                    String vin, make, model, year, tagid, cartype, carcolor;
+                    String vin, make, model, year, tagid, cartype, carcolor, email;
                     vin = String.valueOf(textInputEditTextVin.getText());
                     make = String.valueOf(textInputEditTextMake.getText());
                     model = String.valueOf(textInputEditTextModel.getText());
                     year = String.valueOf(textInputEditTextYear.getText());
                     tagid = String.valueOf(textInputEditTextTag.getText());
-                    cartype = String.valueOf(type);
-                    carcolor = String.valueOf(color);
+                    cartype = String.valueOf(typechoice);
+                    carcolor = String.valueOf(colorchoice);
+                    email = sessionemail;
 
 
                     /*Error handling, if the fields are empty it will show Toast*/
@@ -121,7 +125,7 @@ public class AssetRegistration extends AppCompatActivity {
                             public void run() {
                                 //Starting Write and Read data with URL
                                 //Creating array for parameters
-                                String[] field = new String[7];
+                                String[] field = new String[8];
                                 field[0] = "VIN";
                                 field[1] = "Make";
                                 field[2] = "Model";
@@ -129,10 +133,11 @@ public class AssetRegistration extends AppCompatActivity {
                                 field[4] = "Color";
                                 field[5] = "Type";
                                 field[6] = "Tag";
+                                field[7] = "Email";
 
 
                                 //Creating array for data
-                                String[] data = new String[7];
+                                String[] data = new String[8];
                                 data[0] = vin;
                                 data[1] = make;
                                 data[2] = model;
@@ -140,8 +145,7 @@ public class AssetRegistration extends AppCompatActivity {
                                 data[4] = carcolor;
                                 data[5] = cartype;
                                 data[6] = tagid;
-
-                                Log.v("log", data[4]);
+                                data[7] = email;
 
                                 PutData putData = new PutData("http://10.0.0.14/LoginRegister/asset.php", "POST", field, data); //If using a mobil device it will be visible if they are connected to the same network
                                 if (putData.startPut()) {
@@ -169,20 +173,6 @@ public class AssetRegistration extends AppCompatActivity {
             });
 
         }
-        /*
-        @Override
-        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-            typechoice = parent.getItemAtPosition(position).toString();
-            Toast.makeText(getApplicationContext(), typechoice, Toast.LENGTH_SHORT).show();
 
-            colorchoice = parent.getItemAtPosition(position).toString();
-            Toast.makeText(getApplicationContext(), colorchoice, Toast.LENGTH_SHORT).show();
-
-        }
-
-        @Override
-        public void onNothingSelected(AdapterView<?> parent) {
-            Toast.makeText(getApplicationContext(), "This field is required", Toast.LENGTH_SHORT).show();
-        }*/
 
 }
