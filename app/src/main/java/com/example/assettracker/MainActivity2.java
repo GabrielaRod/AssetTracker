@@ -9,7 +9,7 @@ import android.widget.Button;
 
 public class MainActivity2 extends AppCompatActivity {
 
-    Button buttonRegister;
+    Button buttonRegister, buttonCreateAlert;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +18,7 @@ public class MainActivity2 extends AppCompatActivity {
 
         /*On click listener for the Cancel button in case the user wants to cancel registration*/
         buttonRegister = findViewById(R.id.buttonasset);
+        buttonCreateAlert = findViewById(R.id.buttoncreatealert);
 
         buttonRegister.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -27,5 +28,15 @@ public class MainActivity2 extends AppCompatActivity {
                 finish();
             }
         });
+
+        buttonCreateAlert.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), Alert.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
         }
 }

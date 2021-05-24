@@ -48,9 +48,6 @@
         <item>Orange</item>
     </string-array>
     <string name="title_activity_maps">Map</string>
-    <!--  Auth0  -->
-    <string name="auth0_client_id">oEv4haxqw8DzdNGZttIQ1886drex93q6</string>
-    <string name="auth0_domain">dev-42xjlb9o.us.auth0.com</string>
-    <string name="api_url">http://127.0.0.1:8080/timesheets</string>
-
+    <string name="createalert">Create Alert</string>
+    <string name="alertsbanner">Please Choose a Tag to Report</string>
 </resources>

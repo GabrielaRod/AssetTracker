@@ -113,7 +113,6 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <!--Color drop down-->
-
         <Spinner
             android:id="@+id/color_spinner"
             android:layout_width="match_parent"
