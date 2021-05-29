@@ -153,7 +153,7 @@ public class AssetRegistration extends AppCompatActivity {
                                         progressBar.setVisibility(View.GONE);
                                         String result = putData.getResult();
                                         Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
-                                        if(result.equals("Asset Registration Successful")){
+                                        if(result.equals("Registration Sucessful")){
                                             Intent intent = new Intent(getApplicationContext(), MainActivity2.class); //If success it will take you to MainActivity2
                                             startActivity(intent);
                                             finish();
