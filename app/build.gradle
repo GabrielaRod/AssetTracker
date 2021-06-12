@@ -48,9 +48,7 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
     implementation 'com.google.android.material:material:1.4.0-beta01'
     implementation 'com.github.VishnuSivadasVS:Advanced-HttpURLConnection:1.2' //Handles PHP Requests
-    //implementation "com.squareup.okhttp3:okhttp:4.9.0"//this package provides an HTTP application to make requests to the Node.JS API.
-    implementation 'com.auth0.android:auth0:2.2.0' //this package enables integration with Auth0 to authenticate users.
-    //implementation 'com.auth0.android:jwtdecode:2.0.0' //this package will assist with decoding JWTs.
+    implementation 'com.android.volley:volley:1.2.0'
     implementation 'com.google.android.gms:play-services-maps:17.0.1'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'

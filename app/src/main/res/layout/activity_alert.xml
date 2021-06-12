@@ -30,13 +30,13 @@
         android:layout_marginTop="48dp"
         android:layout_marginEnd="30dp"
         android:drawableEnd="@drawable/ic_dropdown"
-        android:drawableRight="@drawable/ic_dropdown"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
-    <!--Submit Button-->
+
+
     <Button
         android:id="@+id/submit"
         style="@style/Widget.AppCompat.Button.Colored"
@@ -70,5 +70,73 @@
         app:layout_constraintStart_toEndOf="@+id/submit"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.883" />
+
+    <!--Table-->
+    <TableLayout
+        android:layout_width="300dp"
+        android:layout_height="200dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tags_spinner"
+        app:layout_constraintVertical_bias="0.296">
+
+        <TableRow
+            android:id="@+id/tableRow"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppinsbold"
+                android:text="@string/tagalert"
+                android:textColor="@color/purple_500"
+                android:textSize="15sp"
+                android:gravity="center"
+                tools:layout_conversion_absoluteHeight="26dp"
+                tools:layout_conversion_absoluteWidth="65dp"
+                tools:layout_editor_absoluteX="0dp"
+                tools:layout_editor_absoluteY="0dp" />
+
+            <TextView
+                android:layout_width="126dp"
+                android:layout_height="wrap_content"
+                android:baselineAligned="false"
+                android:fontFamily="@font/poppinsbold"
+                android:gravity="center"
+                android:text="@string/vehicle_id_alert"
+                android:textColor="@color/purple_500"
+                android:textSize="15sp"
+                tools:layout_conversion_absoluteHeight="26dp"
+                tools:layout_conversion_absoluteWidth="113dp"
+                tools:layout_editor_absoluteX="65dp"
+                tools:layout_editor_absoluteY="0dp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textViewTagsText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="20dp"
+                android:gravity="center"
+                android:fontFamily="@font/poppinsmedium" />
+
+            <TextView
+                android:id="@+id/textViewVehicleText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="20dp"
+                android:fontFamily="@font/poppinsmedium" />
+        </TableRow>
+    </TableLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

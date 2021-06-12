@@ -23,7 +23,7 @@
     <string name="cancel">Cancel</string>
     <string name="tag_id">Tag ID</string>
     <string name="asset_registration">Asset Registration</string>
-    <string name="register">Register</string>
+    <string name="register">Register An Asset</string>
     <string-array name="type">
         <item>SUV</item>
         <item>Sedan</item>
@@ -47,7 +47,18 @@
         <item>Yellow</item>
         <item>Orange</item>
     </string-array>
+
+    <string-array name="tagsdummy">
+        <item>XR5RKM4XEZFM6ZWDCAA</item>
+        <item>WEY4PS8TO08PUGN6FN9</item>
+        <item>W386095Y4ADEZBC27X1</item>
+    </string-array>
+
     <string name="title_activity_maps">Map</string>
     <string name="createalert">Create Alert</string>
     <string name="alertsbanner">Please Choose a Tag to Report</string>
+    <string name="tagalert">Tag Alert</string>
+    <string name="vehicle_id_alert">Vehicle Id Alert</string>
+    <string name="view_map">View Map</string>
+    <string name="disable_alert">Disable Alert</string>
 </resources>
