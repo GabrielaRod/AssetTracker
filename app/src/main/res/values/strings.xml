@@ -56,9 +56,17 @@
 
     <string name="title_activity_maps">Map</string>
     <string name="createalert">Create Alert</string>
-    <string name="alertsbanner">Please Choose a Tag to Report</string>
-    <string name="tagalert">Tag Alert</string>
+    <string name="alertsbanner">Elige el Tag</string>
+    <string name="tagalert">Informacion del Vehiculo</string>
     <string name="vehicle_id_alert">Vehicle Id Alert</string>
     <string name="view_map">View Map</string>
     <string name="disable_alert">Disable Alert</string>
+    <string name="alertvin">VIN</string>
+    <string name="alertmodel">Model</string>
+    <string name="alertmake">Make</string>
+    <string name="alertcolor">Color</string>
+    <string name="vinlabel">VIN</string>
+    <string name="makelabel">Marca</string>
+    <string name="modellabel">Modelo</string>
+    <string name="colorlabel">Color</string>
 </resources>

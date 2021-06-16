@@ -99,43 +99,111 @@
                 tools:layout_conversion_absoluteWidth="65dp"
                 tools:layout_editor_absoluteX="0dp"
                 tools:layout_editor_absoluteY="0dp" />
-
-            <TextView
-                android:layout_width="126dp"
-                android:layout_height="wrap_content"
-                android:baselineAligned="false"
-                android:fontFamily="@font/poppinsbold"
-                android:gravity="center"
-                android:text="@string/vehicle_id_alert"
-                android:textColor="@color/purple_500"
-                android:textSize="15sp"
-                tools:layout_conversion_absoluteHeight="26dp"
-                tools:layout_conversion_absoluteWidth="113dp"
-                tools:layout_editor_absoluteX="65dp"
-                tools:layout_editor_absoluteY="0dp" />
         </TableRow>
-
+        <!-- VIN ROW -->
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/textViewTagsText"
+                android:id="@+id/textViewVehicleVINLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="@string/vinlabel"
+                android:gravity="left"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="20dp"
-                android:gravity="center"
-                android:fontFamily="@font/poppinsmedium" />
+                android:fontFamily="@font/poppinsbold" />
 
             <TextView
-                android:id="@+id/textViewVehicleText"
+                android:id="@+id/textViewVehicleVIN"
+                android:layout_width="101dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="0dp"
+                android:layout_marginEnd="20dp"
+                android:fontFamily="@font/poppinsbold"
+                android:gravity="start"
+                android:text="@string/alertvin" />
+
+        </TableRow>
+        <!-- Make ROW -->
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textViewVehicleMakeLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center"
+                android:text="@string/makelabel"
+                android:gravity="left"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="20dp"
-                android:fontFamily="@font/poppinsmedium" />
+                android:fontFamily="@font/poppinsbold" />
+
+            <TextView
+                android:id="@+id/textViewVehicleMake"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/alertmake"
+                android:gravity="left"
+                android:layout_marginStart="0dp"
+                android:layout_marginEnd="20dp"
+                android:fontFamily="@font/poppinsbold" />
+
+        </TableRow>
+        <!-- Model ROW -->
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textViewVehicleModelLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/modellabel"
+                android:gravity="left"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="20dp"
+                android:fontFamily="@font/poppinsbold" />
+
+            <TextView
+                android:id="@+id/textViewVehicleModel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/alertmodel"
+                android:gravity="left"
+                android:layout_marginStart="0dp"
+                android:layout_marginEnd="20dp"
+                android:fontFamily="@font/poppinsbold" />
+
+        </TableRow>
+
+        <!-- Color ROW -->
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textViewVehicleColorLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/colorlabel"
+                android:gravity="left"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="20dp"
+                android:fontFamily="@font/poppinsbold" />
+
+            <TextView
+                android:id="@+id/textViewVehicleColor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/alertcolor"
+                android:gravity="left"
+                android:layout_marginStart="0dp"
+                android:layout_marginEnd="20dp"
+                android:fontFamily="@font/poppinsbold" />
+
         </TableRow>
     </TableLayout>
 
