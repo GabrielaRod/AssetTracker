@@ -34,8 +34,6 @@ public class Alert extends AppCompatActivity {
 
     Button buttonSubmit, buttonCancel;
     Spinner tagSpinner;
-    ArrayList<String> tagList;
-    ArrayList<String> vehicleInfo;
     ArrayAdapter<String> tagidAdapter;
     RequestQueue requestQueue;
     String URL, sessionemail, tagChoice, idvehicle;

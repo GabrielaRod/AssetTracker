@@ -52,7 +52,7 @@ public class MainActivity2 extends AppCompatActivity {
         buttonDisableAlert.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), MainActivity2.class);
+                Intent intent = new Intent(getApplicationContext(), DisableAlert.class);
                 startActivity(intent);
                 finish();
             }
