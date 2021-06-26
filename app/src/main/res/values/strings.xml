@@ -14,16 +14,16 @@
     <string name="signuphere">Create new account? <u>Sign Up</u></string>
     <string name="signuppassword">Password</string>
     <string name="sign_up">Sign Up</string>
-    <string name="welcome">Welcome, please press the button below to Register an Asset</string>
+    <string name="welcome">Bienvenido! pulse la opcion que desea</string>
     <string name="vin">VIN</string>
-    <string name="make">Make</string>
-    <string name="model">Model</string>
-    <string name="year">Year</string>
+    <string name="make">Marca</string>
+    <string name="model">Modelo</string>
+    <string name="year">Año</string>
     <string name="submit">Submit</string>
     <string name="cancel">Cancel</string>
     <string name="tag_id">Tag ID</string>
-    <string name="asset_registration">Asset Registration</string>
-    <string name="register">Register An Asset</string>
+    <string name="asset_registration">Formulario de Registro de Activo</string>
+    <string name="register">Registrar Activo</string>
     <string-array name="type">
         <item>SUV</item>
         <item>Sedan</item>
@@ -55,12 +55,12 @@
     </string-array>
 
     <string name="title_activity_maps">Map</string>
-    <string name="createalert">Create Alert</string>
+    <string name="createalert">Crear Alerta</string>
     <string name="alertsbanner">Elige el Tag</string>
     <string name="tagalert">Informacion del Vehiculo</string>
     <string name="vehicle_id_alert">Vehicle Id Alert</string>
-    <string name="view_map">View Map</string>
-    <string name="disable_alert">Disable Alert</string>
+    <string name="view_map">Ver Map</string>
+    <string name="disable_alert">Deshabilitar Alerta</string>
     <string name="alertvin">VIN</string>
     <string name="alertmodel">Model</string>
     <string name="alertmake">Make</string>

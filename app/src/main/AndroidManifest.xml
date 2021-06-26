@@ -58,6 +58,7 @@
             android:theme="@style/Theme.Design.Light.NoActionBar" />
         <activity
             android:name=".MapsActivity"
+            android:theme="@style/Theme.Design.Light.NoActionBar"
             android:label="@string/title_activity_maps" />
         <activity
             android:name=".DisableAlert"
