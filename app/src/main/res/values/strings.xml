@@ -48,6 +48,89 @@
         <item>Orange</item>
     </string-array>
 
+    <string-array name="brand">
+        <item>Acura</item>
+        <item>Alfa Romeo</item>
+        <item>Audi</item>
+        <item>Baic</item>
+        <item>Bajaj</item>
+        <item>Bentley</item>
+        <item>BMW</item>
+        <item>Brilliance</item>
+        <item>BYD</item>
+        <item>Cadillac</item>
+        <item>Changan</item>
+        <item>Chery</item>
+        <item>Chevrolet</item>
+        <item>Chrysler</item>
+        <item>Citroen</item>
+        <item>Daewoo</item>
+        <item>Daihatsu</item>
+        <item>Datsun</item>
+        <item>DFM</item>
+        <item>Dodge</item>
+        <item>Dongfeng</item>
+        <item>Ferrari</item>
+        <item>Fiat</item>
+        <item>Ford</item>
+        <item>Foton</item>
+        <item>Gac Gonow</item>
+        <item>GMC</item>
+        <item>Higer</item>
+        <item>Hino</item>
+        <item>Honda</item>
+        <item>Hummer</item>
+        <item>Hyundai</item>
+        <item>Infiniti</item>
+        <item>Isuzu</item>
+        <item>Jac</item>
+        <item>Jaguar</item>
+        <item>Jeep</item>
+        <item>Jin-Bei</item>
+        <item>JMC</item>
+        <item>Kia</item>
+        <item>Lamborghini</item>
+        <item>Lancia</item>
+        <item>Land Rover</item>
+        <item>Landwind</item>
+        <item>Lexus</item>
+        <item>Lincoln</item>
+        <item>Mahindra</item>
+        <item>Maserati</item>
+        <item>Maxus</item>
+        <item>Mazda</item>
+        <item>McLaren</item>
+        <item>Mercedes-Benz</item>
+        <item>Mercury</item>
+        <item>MG</item>
+        <item>Mini</item>
+        <item>Mitsubishi</item>
+        <item>Nissan</item>
+        <item>Oldsmobile</item>
+        <item>Peugeot</item>
+        <item>Piaggio</item>
+        <item>Plymouth</item>
+        <item>Pontiac</item>
+        <item>Porsche</item>
+        <item>Ram</item>
+        <item>Renault</item>
+        <item>Rolls Royce</item>
+        <item>Samsung</item>
+        <item>Seat</item>
+        <item>Shineray</item>
+        <item>Skoda</item>
+        <item>Smart</item>
+        <item>SsangYong</item>
+        <item>Subaru</item>
+        <item>Suzuki</item>
+        <item>Tesla</item>
+        <item>Toyota</item>
+        <item>Victory</item>
+        <item>Volkswagen</item>
+        <item>Volvo</item>
+        <item>ZX</item>
+    </string-array>
+
     <string-array name="tagsdummy">
         <item>XR5RKM4XEZFM6ZWDCAA</item>
         <item>WEY4PS8TO08PUGN6FN9</item>
