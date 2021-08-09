@@ -33,8 +33,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     private GoogleMap mMap;
     private ActivityMapsBinding binding;
-    ArrayList<String> markerslist;
-    String URL, sessionemail;
+    ArrayList<String> latitudelist, longitudelist;
+    String URL, sessionemail, latitude, longitude;
     RequestQueue requestQueue;
     SessionManager sessionManager;
 
@@ -79,6 +79,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap = googleMap;
 
         // Add a marker in Sydney and move the camera
+
         LatLng sydney = new LatLng(-34, 151);
         mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
@@ -86,34 +87,27 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     /* GETS THE DATA FOR THE MAPS MARKERS */
     public void getData() throws JSONException {
-        /*Create ArrayList to store vehicle_id to later get vehicle data from DB Query*/
+        /*Create ArrayList to store markers to later send it to the Maps*/
+        ArrayList<String> latitude = new ArrayList<>();
+        ArrayList<String> longitude = new ArrayList<>();
 
 
         /*To get the JSON Data from the Query*/
         StringRequest strRequest = new StringRequest(Request.Method.POST,
                 URL,
-                new Response.Listener<String>()
-                {
+                new Response.Listener<String>() {
                     @Override
-                    public void onResponse(String response)
-                    {
+                    public void onResponse(String response) {
                         JSONArray jsonArray = null;
 
                         try {
                             jsonArray = new JSONArray(response);
                             for (int i = 0; i < jsonArray.length(); i++) {
                                 JSONObject jsonObject = jsonArray.getJSONObject(i);
-                                String vin = jsonObject.optString("VIN");
-                                String make = jsonObject.optString("Make");
-                                String model = jsonObject.optString("Model");
-                                String color = jsonObject.optString("Color");
-                                alertslist.add(vin);
-                                makelist.add(make);
-                                modellist.add(model);
-                                colorlist.add(color);
-                                alertAdapter = new ArrayAdapter<>(DisableAlert.this, android.R.layout.simple_spinner_item, alertslist);
-                                alertAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                                vinspinner.setAdapter(alertAdapter);
+                                String latitude = jsonObject.optString("Latitude");
+                                String longitude = jsonObject.optString("Longitude");
+                                latitudelist.add(latitude);
+                                longitudelist.add(longitude);
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -122,18 +116,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
                     }
                 },
-                new Response.ErrorListener()
-                {
+                new Response.ErrorListener() {
                     @Override
-                    public void onErrorResponse(VolleyError error)
-                    {
+                    public void onErrorResponse(VolleyError error) {
                         Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_SHORT).show();
                     }
-                })
-        {
+                }) {
             @Override
-            protected Map<String, String> getParams()
-            {
+            protected Map<String, String> getParams() {
                 /*To add parameters & values for the request*/
                 Map<String, String> params = new HashMap<String, String>();
                 params.put("Email", sessionemail);
@@ -142,31 +132,5 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         };
 
         requestQueue.add(strRequest);
-
-
-
-        vinspinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                vinChoice = parent.getItemAtPosition(position).toString();
-
-                if (alertslist.contains(vinChoice)) {
-                    int choice = alertslist.indexOf(vinChoice);
-                    makeindex = makelist.get(choice);
-                    modelindex = modellist.get(choice);
-                    colorindex = colorlist.get(choice);
-                } else {
-                    Toast.makeText(getApplicationContext(), "The tag does not exist", Toast.LENGTH_SHORT).show();
-                }
-
-                Make.setText(makeindex);
-                Model.setText(modelindex);
-                Color.setText(colorindex);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-                Toast.makeText(getApplicationContext(), "No Data to retrieve", Toast.LENGTH_SHORT).show();
-            }
-        });
+    }
 }
