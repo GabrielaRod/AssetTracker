@@ -1,6 +1,5 @@
 package com.example.assettracker;
 
-import android.app.ActionBar;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -44,10 +43,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         binding = ActivityMapsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
-        /*Display action bar*/
-        ActionBar actionBar = getActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
 
         /*Initializing SessionManager and Get Email*/
         sessionManager = new SessionManager(getApplicationContext());
@@ -105,9 +100,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
             LatLng markers = new LatLng(Double.parseDouble(String.valueOf(latitude)), Double.parseDouble(String.valueOf(longitude)));
             mMap.addMarker(new MarkerOptions().position(markers).title("Last Seen"));
-            mMap.moveCamera(CameraUpdateFactory.newLatLng(markers));
-            mMap.moveCamera(CameraUpdateFactory.zoomTo(15));
-            mMap.animateCamera(CameraUpdateFactory.newLatLng(markers));
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(markers, 15));
 
         }
     }

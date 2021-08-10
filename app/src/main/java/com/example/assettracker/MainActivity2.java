@@ -22,6 +22,7 @@ public class MainActivity2 extends AppCompatActivity {
         buttonViewMap = findViewById(R.id.buttonViewMap);
         buttonDisableAlert = findViewById(R.id.buttonDisableAlert);
 
+
         buttonRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
