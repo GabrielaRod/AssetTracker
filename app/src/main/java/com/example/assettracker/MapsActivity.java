@@ -58,12 +58,18 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         /*Method to fetch Data from the URL*/
         try {
-            getData();
+           getData();
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
