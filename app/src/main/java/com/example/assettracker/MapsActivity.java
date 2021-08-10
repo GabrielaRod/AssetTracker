@@ -1,9 +1,6 @@
 package com.example.assettracker;
 
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
 import androidx.fragment.app.FragmentActivity;
@@ -13,6 +10,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.assettracker.databinding.ActivityMapsBinding;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -27,6 +25,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
@@ -49,6 +48,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         sessionManager = new SessionManager(getApplicationContext());
         sessionemail = sessionManager.getEmail();
 
+        /*Initialize the Request Queue*/
+        requestQueue = Volley.newRequestQueue(this);
+
+
+
         /*URL Where I get the tags from*/
         URL = "http://10.0.0.14/LoginRegister/markers.php";
 
@@ -63,6 +67,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
     }
 
     /**
@@ -78,24 +83,32 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        // Add a marker in Sydney and move the camera
+        Iterator<String> lat = latitudelist.iterator();
+        Iterator<String> lng = longitudelist.iterator();
 
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        // Add a marker in Sydney and move the camera
+        while(lat.hasNext() && lng.hasNext()) {
+            latitude = lat.next();
+            longitude = lng.next();
+
+            LatLng markers = new LatLng(Double.parseDouble(String.valueOf(latitude)), Double.parseDouble(String.valueOf(longitude)));
+            mMap.addMarker(new MarkerOptions().position(markers).title("Last Seen"));
+            mMap.moveCamera(CameraUpdateFactory.newLatLng(markers));
+
+        }
     }
 
     /* GETS THE DATA FOR THE MAPS MARKERS */
     public void getData() throws JSONException {
         /*Create ArrayList to store markers to later send it to the Maps*/
-        ArrayList<String> latitude = new ArrayList<>();
-        ArrayList<String> longitude = new ArrayList<>();
-
+        latitudelist = new ArrayList<>();
+        longitudelist = new ArrayList<>();
 
         /*To get the JSON Data from the Query*/
         StringRequest strRequest = new StringRequest(Request.Method.POST,
                 URL,
-                new Response.Listener<String>() {
+                new Response.Listener<String>()
+                {
                     @Override
                     public void onResponse(String response) {
                         JSONArray jsonArray = null;
@@ -116,16 +129,18 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
                     }
                 },
-                new Response.ErrorListener() {
+                new Response.ErrorListener()
+                {
                     @Override
                     public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getApplicationContext(), "ERROR FETCHING THE DATA: LATITUDE, LONGITUDE", Toast.LENGTH_SHORT).show();
                         Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_SHORT).show();
                     }
                 }) {
             @Override
             protected Map<String, String> getParams() {
                 /*To add parameters & values for the request*/
-                Map<String, String> params = new HashMap<String, String>();
+                Map<String, String> params = new HashMap<>();
                 params.put("Email", sessionemail);
                 return params;
             }
