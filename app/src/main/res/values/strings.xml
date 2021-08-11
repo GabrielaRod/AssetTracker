@@ -19,8 +19,8 @@
     <string name="make">Marca</string>
     <string name="model">Modelo</string>
     <string name="year">Año</string>
-    <string name="submit">Submit</string>
-    <string name="cancel">Cancel</string>
+    <string name="submit">Aceptar</string>
+    <string name="cancel">Cancelar</string>
     <string name="tag_id">Tag ID</string>
     <string name="asset_registration">Formulario de Registro de Activo</string>
     <string name="register">Registrar Activo</string>
@@ -142,7 +142,7 @@
     <string name="alertsbanner">Elige el Tag</string>
     <string name="tagalert">Informacion del Vehiculo</string>
     <string name="vehicle_id_alert">Vehicle Id Alert</string>
-    <string name="view_map">Ver Map</string>
+    <string name="view_map">Ver Mapa</string>
     <string name="disable_alert">Deshabilitar Alerta</string>
     <string name="alertvin">VIN</string>
     <string name="alertmodel">Model</string>

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/primary"
     tools:context=".Alert">
 
     <!--Banner-->
@@ -15,13 +16,19 @@
         android:fontFamily="@font/poppinsbold"
         android:gravity="center"
         android:text="@string/alertsbanner"
-        android:textColor="@color/purple_500"
+        android:textColor="@color/white"
         android:textSize="30sp"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="0dp"
         tools:targetApi="jelly_bean" />
 
+
     <!--Tags drop down-->
+
+
+    <!-- Submit Button -->
+
+
     <Spinner
         android:id="@+id/tags_spinner"
         android:layout_width="match_parent"
@@ -29,21 +36,45 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="48dp"
         android:layout_marginEnd="30dp"
-        android:drawableEnd="@drawable/ic_dropdown"
+        android:background="@drawable/bg_spinner"
+        android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintVertical_bias="0.145"
+        tools:visibility="visible" />
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_baseline_arrow_drop_down_24"
+        app:layout_constraintEnd_toEndOf="@+id/tags_spinner"
+        app:layout_constraintHorizontal_bias="0.952"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="173dp" />
 
-    <!-- Submit Button -->
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="410dp"
+        android:layout_height="500dp"
+        android:background="@drawable/bg_menu"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+    </LinearLayout>
+
     <Button
         android:id="@+id/submit"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
-        android:background="@color/purple_500"
+        android:background="@drawable/bg_blue"
         android:fontFamily="@font/poppinsmedium"
         android:text="@string/submit"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -54,6 +85,8 @@
         app:layout_constraintVertical_bias="0.885"
         tools:ignore="MissingConstraints" />
 
+
+
     <!--Cancel Button-->
     <Button
         android:id="@+id/cancel"
@@ -61,7 +94,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="30dp"
-        android:background="@color/red"
+        android:background="@drawable/bg_red"
         android:fontFamily="@font/poppinsmedium"
         android:text="@string/cancel"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -73,8 +106,10 @@
 
     <!--Table-->
     <TableLayout
+        android:id="@+id/tableLayout"
         android:layout_width="300dp"
         android:layout_height="200dp"
+        android:layout_weight="2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
@@ -84,6 +119,8 @@
 
         <TableRow
             android:id="@+id/tableRow"
+            android:gravity="center"
+            android:layout_marginBottom="20dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -91,10 +128,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppinsbold"
+                android:gravity="center"
                 android:text="@string/tagalert"
                 android:textColor="@color/purple_500"
                 android:textSize="15sp"
-                android:gravity="center"
                 tools:layout_conversion_absoluteHeight="26dp"
                 tools:layout_conversion_absoluteWidth="65dp"
                 tools:layout_editor_absoluteX="0dp"
@@ -107,19 +144,19 @@
 
             <TextView
                 android:id="@+id/textViewVehicleVINLabel"
-                android:layout_width="wrap_content"
+                android:layout_width="127dp"
                 android:layout_height="wrap_content"
-                android:text="@string/vinlabel"
-                android:gravity="left"
                 android:layout_marginStart="10dp"
-                android:layout_marginEnd="20dp"
-                android:fontFamily="@font/poppinsbold" />
+                android:layout_marginEnd="100dp"
+                android:fontFamily="@font/poppinsbold"
+                android:gravity="left"
+                android:text="@string/vinlabel" />
 
             <TextView
                 android:id="@+id/textViewVehicleVIN"
-                android:layout_width="101dp"
+                android:layout_width="100dp"
                 android:layout_height="match_parent"
-                android:layout_marginStart="0dp"
+                android:layout_marginStart="-100dp"
                 android:layout_marginEnd="20dp"
                 android:fontFamily="@font/poppinsbold"
                 android:gravity="start"
@@ -135,21 +172,21 @@
                 android:id="@+id/textViewVehicleMakeLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/makelabel"
-                android:gravity="left"
                 android:layout_marginStart="10dp"
-                android:layout_marginEnd="20dp"
-                android:fontFamily="@font/poppinsbold" />
+                android:layout_marginEnd="100dp"
+                android:fontFamily="@font/poppinsbold"
+                android:gravity="left"
+                android:text="@string/makelabel" />
 
             <TextView
                 android:id="@+id/textViewVehicleMake"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/alertmake"
-                android:gravity="left"
-                android:layout_marginStart="0dp"
+                android:layout_marginStart="-100dp"
                 android:layout_marginEnd="20dp"
-                android:fontFamily="@font/poppinsbold" />
+                android:fontFamily="@font/poppinsbold"
+                android:gravity="left"
+                android:text="@string/alertmake" />
 
         </TableRow>
         <!-- Model ROW -->
@@ -161,21 +198,21 @@
                 android:id="@+id/textViewVehicleModelLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/modellabel"
-                android:gravity="left"
                 android:layout_marginStart="10dp"
-                android:layout_marginEnd="20dp"
-                android:fontFamily="@font/poppinsbold" />
+                android:layout_marginEnd="100dp"
+                android:fontFamily="@font/poppinsbold"
+                android:gravity="left"
+                android:text="@string/modellabel" />
 
             <TextView
                 android:id="@+id/textViewVehicleModel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/alertmodel"
-                android:gravity="left"
-                android:layout_marginStart="0dp"
+                android:layout_marginStart="-100dp"
                 android:layout_marginEnd="20dp"
-                android:fontFamily="@font/poppinsbold" />
+                android:fontFamily="@font/poppinsbold"
+                android:gravity="left"
+                android:text="@string/alertmodel" />
 
         </TableRow>
 
@@ -188,21 +225,21 @@
                 android:id="@+id/textViewVehicleColorLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/colorlabel"
-                android:gravity="left"
                 android:layout_marginStart="10dp"
-                android:layout_marginEnd="20dp"
-                android:fontFamily="@font/poppinsbold" />
+                android:layout_marginEnd="100dp"
+                android:fontFamily="@font/poppinsbold"
+                android:gravity="left"
+                android:text="@string/colorlabel" />
 
             <TextView
                 android:id="@+id/textViewVehicleColor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/alertcolor"
-                android:gravity="left"
-                android:layout_marginStart="0dp"
+                android:layout_marginStart="-100dp"
                 android:layout_marginEnd="20dp"
-                android:fontFamily="@font/poppinsbold" />
+                android:fontFamily="@font/poppinsbold"
+                android:gravity="left"
+                android:text="@string/alertcolor" />
 
         </TableRow>
     </TableLayout>
