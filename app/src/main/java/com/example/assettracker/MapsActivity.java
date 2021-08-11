@@ -99,7 +99,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             longitude = lng.next();
 
             LatLng markers = new LatLng(Double.parseDouble(String.valueOf(latitude)), Double.parseDouble(String.valueOf(longitude)));
-            mMap.addMarker(new MarkerOptions().position(markers).title("Last Seen"));
+            mMap.addMarker(new MarkerOptions().position(markers).title("Visto por ultima vez"));
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(markers, 15));
 
         }

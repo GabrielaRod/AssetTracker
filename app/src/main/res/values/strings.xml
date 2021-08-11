@@ -14,7 +14,7 @@
     <string name="signuphere">Create new account? <u>Sign Up</u></string>
     <string name="signuppassword">Password</string>
     <string name="sign_up">Sign Up</string>
-    <string name="welcome">Bienvenido! pulse la opcion que desea</string>
+    <string name="welcome">Bienvenido!</string>
     <string name="vin">VIN</string>
     <string name="make">Marca</string>
     <string name="model">Modelo</string>
