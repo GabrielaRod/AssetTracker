@@ -51,8 +51,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         /*Initialize the Request Queue*/
         requestQueue = Volley.newRequestQueue(this);
 
-
-
         /*URL Where I get the tags from*/
         URL = "http://10.0.0.14/LoginRegister/markers.php";
 

@@ -5,22 +5,27 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".DisableAlert"
-    android:orientation="horizontal"
-    android:padding="16dp">
+    android:background="@color/primary"
+    android:orientation="horizontal">
+
+    <!--Tags drop down-->
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
         android:fontFamily="@font/poppinsbold"
         android:gravity="center"
         android:text="@string/disablealertbanner"
-        android:textColor="@color/purple_500"
+        android:textColor="@color/white"
         android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.299"
         tools:targetApi="jelly_bean" />
 
-    <!--Tags drop down-->
     <Spinner
         android:id="@+id/alerts_spinner"
         android:layout_width="match_parent"
@@ -28,6 +33,7 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="48dp"
         android:layout_marginEnd="30dp"
+        android:background="@drawable/bg_spinner"
         android:drawableEnd="@drawable/ic_dropdown"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -36,13 +42,37 @@
 
 
     <!-- Submit Button -->
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_baseline_arrow_drop_down_24"
+        app:layout_constraintBottom_toBottomOf="@+id/alerts_spinner"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.872"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/alerts_spinner" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:background="@drawable/bg_menu"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+    </LinearLayout>
+
     <Button
         android:id="@+id/submit"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
-        android:background="@color/purple_500"
+        android:background="@drawable/bg_blue"
         android:fontFamily="@font/poppinsmedium"
         android:text="@string/submit"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -60,7 +90,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="30dp"
-        android:background="@color/red"
+        android:background="@drawable/bg_red"
         android:fontFamily="@font/poppinsmedium"
         android:text="@string/cancel"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -72,8 +102,10 @@
 
     <!--Table-->
     <TableLayout
+        android:id="@+id/tableLayout"
         android:layout_width="300dp"
         android:layout_height="200dp"
+        android:layout_weight="2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
@@ -83,6 +115,8 @@
 
         <TableRow
             android:id="@+id/tableRow"
+            android:gravity="center"
+            android:layout_marginBottom="20dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -119,7 +153,7 @@
                 android:text="@string/makelabel"
                 android:gravity="left"
                 android:layout_marginStart="10dp"
-                android:layout_marginEnd="20dp"
+                android:layout_marginEnd="100dp"
                 android:fontFamily="@font/poppinsbold" />
 
             <TextView
@@ -128,7 +162,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/alertmake"
                 android:gravity="left"
-                android:layout_marginStart="0dp"
+                android:layout_marginStart="-80dp"
                 android:layout_marginEnd="20dp"
                 android:fontFamily="@font/poppinsbold" />
 
@@ -145,7 +179,7 @@
                 android:text="@string/modellabel"
                 android:gravity="left"
                 android:layout_marginStart="10dp"
-                android:layout_marginEnd="20dp"
+                android:layout_marginEnd="100dp"
                 android:fontFamily="@font/poppinsbold" />
 
             <TextView
@@ -154,7 +188,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/alertmodel"
                 android:gravity="left"
-                android:layout_marginStart="0dp"
+                android:layout_marginStart="-80dp"
                 android:layout_marginEnd="20dp"
                 android:fontFamily="@font/poppinsbold" />
 
@@ -172,7 +206,7 @@
                 android:text="@string/colorlabel"
                 android:gravity="left"
                 android:layout_marginStart="10dp"
-                android:layout_marginEnd="20dp"
+                android:layout_marginEnd="100dp"
                 android:fontFamily="@font/poppinsbold" />
 
             <TextView
@@ -181,7 +215,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/alertcolor"
                 android:gravity="left"
-                android:layout_marginStart="0dp"
+                android:layout_marginStart="-80dp"
                 android:layout_marginEnd="20dp"
                 android:fontFamily="@font/poppinsbold" />
 

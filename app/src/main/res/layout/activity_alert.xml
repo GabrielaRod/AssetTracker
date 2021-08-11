@@ -51,14 +51,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_baseline_arrow_drop_down_24"
-        app:layout_constraintEnd_toEndOf="@+id/tags_spinner"
-        app:layout_constraintHorizontal_bias="0.952"
+        app:layout_constraintBottom_toBottomOf="@+id/tags_spinner"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.872"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="173dp" />
+        app:layout_constraintTop_toTopOf="@+id/tags_spinner"
+        app:layout_constraintVertical_bias="0.476" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="410dp"
+        android:layout_width="match_parent"
         android:layout_height="500dp"
         android:background="@drawable/bg_menu"
         android:orientation="vertical"

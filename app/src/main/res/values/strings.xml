@@ -153,4 +153,5 @@
     <string name="modellabel">Modelo</string>
     <string name="colorlabel">Color</string>
     <string name="disablealertbanner">Elige una Alerta</string>
+    <string name="type">Tipo</string>
 </resources>

@@ -9,7 +9,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity2 extends AppCompatActivity {
 
-    //Button buttonRegister, buttonCreateAlert, buttonViewMap, buttonDisableAlert;
     LinearLayout buttonRegister, buttonCreateAlert, buttonViewMap, buttonDisableAlert;
 
 
