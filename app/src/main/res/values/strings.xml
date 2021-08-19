@@ -3,17 +3,17 @@
     <string name="login">Login</string>
     <string name="password">Password</string>
     <string name="email">Email</string>
-    <string name="firstname">First Name</string>
-    <string name="lastname">Last Name</string>
-    <string name="domid">ID</string>
-    <string name="address">Address</string>
-    <string name="city">City</string>
-    <string name="phonenumber">Phone Number</string>
-    <string name="loginhere">Already have an Account? <u>Login</u></string>
-    <string name="signup">Sign Up</string>
-    <string name="signuphere">Create new account? <u>Sign Up</u></string>
+    <string name="firstname">Nombre</string>
+    <string name="lastname">Apellido</string>
+    <string name="domid">Cedula</string>
+    <string name="address">Direccion</string>
+    <string name="city">Ciudad</string>
+    <string name="phonenumber">Telefono</string>
+    <string name="loginhere">Ya tienes una cuenta? <u>Accede Aqui</u></string>
+    <string name="signup">Inscribirse</string>
+    <string name="signuphere">Crea una cuenta aqui. <u>Inscribirse</u></string>
     <string name="signuppassword">Password</string>
-    <string name="sign_up">Sign Up</string>
+    <string name="sign_up">Inscribirse</string>
     <string name="welcome">Bienvenido!</string>
     <string name="vin">VIN</string>
     <string name="make">Marca</string>
@@ -36,16 +36,15 @@
     </string-array>
 
     <string-array name="color">
-        <item>Black</item>
-        <item>White</item>
-        <item>Grey</item>
-        <item>Silver</item>
-        <item>Gold</item>
-        <item>Blue</item>
-        <item>Red</item>
-        <item>Green</item>
-        <item>Yellow</item>
-        <item>Orange</item>
+        <item>Negro</item>
+        <item>Blanco</item>
+        <item>Gris</item>
+        <item>Oro</item>
+        <item>Azul</item>
+        <item>Rojo</item>
+        <item>Verde</item>
+        <item>Amarillo</item>
+        <item>Naranja</item>
     </string-array>
 
     <string-array name="brand">
