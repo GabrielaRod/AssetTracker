@@ -190,5 +190,20 @@ public class AssetRegistration extends AppCompatActivity {
 
         }
 
+    @Override
+    public void onBackPressed() {
+
+        int count = getSupportFragmentManager().getBackStackEntryCount();
+
+        if (count == 0) {
+            super.onBackPressed();
+            Intent intent = new Intent(getApplicationContext(), MainActivity2.class);
+            startActivity(intent);
+            finish();
+        } else {
+            getSupportFragmentManager().popBackStack();
+        }
+
+    }
 
 }

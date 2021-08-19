@@ -1,5 +1,6 @@
 package com.example.assettracker;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -101,6 +102,22 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(markers, 15));
 
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        int count = getSupportFragmentManager().getBackStackEntryCount();
+
+        if (count == 0) {
+            super.onBackPressed();
+            Intent intent = new Intent(getApplicationContext(), MainActivity2.class);
+            startActivity(intent);
+            finish();
+        } else {
+            getSupportFragmentManager().popBackStack();
+        }
+
     }
 
     /* GETS THE DATA FOR THE MAPS MARKERS */
