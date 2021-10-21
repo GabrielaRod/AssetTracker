@@ -7,6 +7,8 @@ public class SessionManager {
 
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
+    //String ServerURL = "http://ec2-3-83-147-13.compute-1.amazonaws.com/apprequest/";
+    String ServerURL = "http://10.0.0.14/LoginRegister/";
 
     /*Constructor*/
     public SessionManager(Context context){

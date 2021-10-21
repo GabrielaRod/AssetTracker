@@ -37,6 +37,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     String URL, sessionemail, latitude, longitude;
     RequestQueue requestQueue;
     SessionManager sessionManager;
+    String serverURL;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,11 +50,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         sessionManager = new SessionManager(getApplicationContext());
         sessionemail = sessionManager.getEmail();
 
+        /*Global variable to hold the server URL*/
+        serverURL = sessionManager.ServerURL;
+
         /*Initialize the Request Queue*/
         requestQueue = Volley.newRequestQueue(this);
 
         /*URL Where I get the tags from*/
-        URL = "http://10.0.0.14/LoginRegister/markers.php";
+        URL = serverURL+"markers.php";
 
         /*Method to fetch Data from the URL*/
         try {

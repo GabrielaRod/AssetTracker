@@ -12,17 +12,18 @@
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginTop="8dp"
         android:background="@drawable/bg_menu"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" >
+        app:layout_constraintTop_toBottomOf="@+id/textView">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="636dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -30,59 +31,73 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0">
 
-            <!--VIN (matricula) field-->
-
-            <!--Make field-->
-
+            <!--License Plate-->
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayoutVin"
+                android:id="@+id/textInputLayoutLicense"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
                 android:layout_marginStart="30dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="30dp"
+                android:hint="@string/license"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/license"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppinsmedium"
+                    android:inputType="textCapCharacters" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- VIN -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayoutVIN"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="15dp"
                 android:layout_marginEnd="30dp"
                 android:hint="@string/vin"
-                android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="MissingConstraints">
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayoutLicense">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/vin"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:drawableEnd="@drawable/ic_vin"
-                    android:fontFamily="@font/poppinsmedium" />
+                    android:fontFamily="@font/poppinsmedium"
+                    android:inputType="textCapCharacters" />
             </com.google.android.material.textfield.TextInputLayout>
 
+            <!--Make field-->
             <Spinner
-                android:orientation="vertical"
                 android:id="@+id/brand_spinner"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:layout_marginStart="30dp"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="15dp"
                 android:layout_marginEnd="30dp"
-                android:drawableEnd="@drawable/ic_dropdown"
+                android:drawableStart="@drawable/ic_dropdown"
+                android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textInputLayoutVin" />
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayoutVIN" />
 
-
-            <!--Dropdown Icon-->
-
+            <!--Model-->
             <com.google.android.material.textfield.TextInputLayout
-                android:orientation="vertical"
                 android:id="@+id/textInputLayoutModel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="15dp"
                 android:layout_marginRight="30dp"
                 android:hint="@string/model"
+                android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -96,22 +111,16 @@
                     tools:targetApi="jelly_bean" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <!--Year field-->
-
-            <!--Color drop down-->
-
-            <!--Type drop down-->
-
-
+            <!--Year-->
             <com.google.android.material.textfield.TextInputLayout
-                android:orientation="vertical"
                 android:id="@+id/textInputLayoutYear"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="15dp"
                 android:layout_marginRight="30dp"
                 android:hint="@string/year"
+                android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textInputLayoutModel">
@@ -125,47 +134,46 @@
                     tools:targetApi="jelly_bean" />
             </com.google.android.material.textfield.TextInputLayout>
 
+            <!--Color-->
             <Spinner
-                android:orientation="vertical"
                 android:id="@+id/color_spinner"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:layout_marginStart="30dp"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="15dp"
                 android:layout_marginEnd="30dp"
-                android:drawableEnd="@drawable/ic_dropdown"
+                android:drawableStart="@drawable/ic_dropdown"
+                android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textInputLayoutYear" />
 
-            <!--Dropdown Icon-->
-
+            <!--Type-->
             <Spinner
-                android:orientation="vertical"
                 android:id="@+id/type_spinner"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:layout_marginStart="30dp"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="15dp"
                 android:layout_marginEnd="30dp"
-                android:drawableEnd="@drawable/ic_dropdown"
+                android:drawableStart="@drawable/ic_dropdown"
+                android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/color_spinner" />
 
-            <!--Dropdown Icon-->
-
+            <!--Tag ID-->
             <com.google.android.material.textfield.TextInputLayout
-                android:orientation="vertical"
                 android:id="@+id/textInputLayoutTag"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="15dp"
                 android:layout_marginRight="30dp"
                 android:hint="@string/tag_id"
+                android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/type_spinner">
@@ -178,14 +186,7 @@
                     tools:targetApi="jelly_bean" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <ProgressBar
-                android:id="@+id/progressasset"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:visibility="gone"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textInputLayoutTag" />
+            <!--Buttons-->
 
             <Button
                 android:id="@+id/submit"
@@ -193,32 +194,35 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
+                android:layout_marginTop="5dp"
                 android:background="@drawable/bg_blue"
                 android:fontFamily="@font/poppinsmedium"
                 android:text="@string/submit"
+                android:textColor="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.232"
+                app:layout_constraintHorizontal_bias="0.231"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textInputLayoutTag"
-                app:layout_constraintVertical_bias="0.194" />
+                app:layout_constraintVertical_bias="0.238" />
 
             <Button
                 android:id="@+id/cancel"
                 style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
                 android:layout_marginEnd="30dp"
                 android:background="@drawable/bg_red"
                 android:fontFamily="@font/poppinsmedium"
                 android:text="@string/cancel"
+                android:textColor="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.448"
+                app:layout_constraintHorizontal_bias="0.44"
                 app:layout_constraintStart_toEndOf="@+id/submit"
                 app:layout_constraintTop_toBottomOf="@+id/textInputLayoutTag"
-                app:layout_constraintVertical_bias="0.197" />
-
+                app:layout_constraintVertical_bias="0.236" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -228,7 +232,7 @@
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="26dp"
         android:fontFamily="@font/poppinsbold"
         android:gravity="center"
         android:text="@string/asset_registration"

@@ -36,7 +36,7 @@ public class Alert extends AppCompatActivity {
     Spinner tagSpinner;
     ArrayAdapter<String> tagidAdapter;
     RequestQueue requestQueue;
-    String URL, sessionemail, tagChoice, idvehicle;
+    String URL, serverURL, sessionemail, tagChoice, idvehicle, tagid, LicensePlate;
     SessionManager sessionManager;
     TextView VIN, Make, Model, Color;
 
@@ -51,17 +51,20 @@ public class Alert extends AppCompatActivity {
 
         /*Initialize the Request Queue*/
         requestQueue = Volley.newRequestQueue(this);
-
+        
         /*Initializing SessionManager and Get Email*/
         sessionManager = new SessionManager(getApplicationContext());
         sessionemail = sessionManager.getEmail();
 
-        /*URL Where I get the tags from*/
-        URL = "http://10.0.0.14/LoginRegister/gettag.php";
+        /*Global variable to hold the server URL*/
+        serverURL = sessionManager.ServerURL;
 
+        /*URL Where I get the tags from*/
+        URL = serverURL+"gettag.php";
 
 
         /*Initialize the TextViewer*/
+        LicensePlate = "";
         VIN = findViewById(R.id.textViewVehicleVIN);
         Make = findViewById(R.id.textViewVehicleMake);
         Model = findViewById(R.id.textViewVehicleModel);
@@ -88,68 +91,63 @@ public class Alert extends AppCompatActivity {
         });
 
         /*On click listener for the submit button*/
-        buttonSubmit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        buttonSubmit.setOnClickListener(v -> {
 
-                /*Getting the data from the input variables*/
-                String vin, make, model, color, status, email;
-                vin = String.valueOf(VIN.getText());
-                make = String.valueOf(Make.getText());
-                model = String.valueOf(Model.getText());
-                color = String.valueOf(Color.getText());
-                status = "ACTIVE";
-                email = sessionemail;
-
-
-                /*Error handling, if the fields are empty it will show Toast*/
-                if(!vin.equals("") && !make.equals("") && !model.equals("") && !color.equals("") && !email.equals("")){
-                    Handler handler = new Handler(Looper.getMainLooper());
-                    handler.post(new Runnable() {
-                        @Override
-                        public void run() {
-                            //Starting Write and Read data with URL
-                            //Creating array for parameters
-                            String[] field = new String[6];
-                            field[0] = "VIN";
-                            field[1] = "Make";
-                            field[2] = "Model";
-                            field[3] = "Color";
-                            field[4] = "Status";
-                            field[5] = "Email";
+            /*Getting the data from the input variables*/
+            String vin, license, make, model, color, status, email;
+            vin = String.valueOf(VIN.getText());
+            license = LicensePlate;
+            make = String.valueOf(Make.getText());
+            model = String.valueOf(Model.getText());
+            color = String.valueOf(Color.getText());
+            status = "ACTIVE";
+            email = sessionemail;
 
 
-                            //Creating array for data
-                            String[] data = new String[6];
-                            data[0] = vin;
-                            data[1] = make;
-                            data[2] = model;
-                            data[3] = color;
-                            data[4] = status;
-                            data[5] = email;
+            /*Error handling, if the fields are empty it will show Toast*/
+            if(!vin.equals("") && !make.equals("") && !model.equals("") && !color.equals("") && !email.equals("")){
+                Handler handler = new Handler(Looper.getMainLooper());
+                handler.post(() -> {
+                    //Starting Write and Read data with URL
+                    //Creating array for parameters
+                    String[] field = new String[7];
+                    field[0] = "VIN";
+                    field[1] = "LicensePlate";
+                    field[2] = "Make";
+                    field[3] = "Model";
+                    field[4] = "Color";
+                    field[5] = "Status";
+                    field[6] = "Email";
 
-                            PutData putData = new PutData("http://10.0.0.14/LoginRegister/alert.php", "POST", field, data); //If using a mobil device it will be visible if they are connected to the same network
-                            if (putData.startPut()) {
-                                if (putData.onComplete()) {
-                                    String result = putData.getResult();
-                                    Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
-                                    if(result.equals("Registration Successful")){
-                                        Intent intent = new Intent(getApplicationContext(), MainActivity2.class); //If success it will take you to MainActivity2
-                                        startActivity(intent);
-                                        finish();
-                                    }
-                                }
+
+                    //Creating array for data
+                    String[] data = new String[7];
+                    data[0] = vin;
+                    data[1] = license;
+                    data[2] = make;
+                    data[3] = model;
+                    data[4] = color;
+                    data[5] = status;
+                    data[6] = email;
+
+                    PutData putData = new PutData(serverURL+"alert.php", "POST", field, data); //If using a mobil device it will be visible if they are connected to the same network
+                    if (putData.startPut()) {
+                        if (putData.onComplete()) {
+                            String result = putData.getResult();
+                            Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
+                            if(result.equals("Registration Successful")){
+                                Intent intent = new Intent(getApplicationContext(), MainActivity2.class); //If success it will take you to MainActivity2
+                                startActivity(intent);
+                                finish();
                             }
-                            //End Write and Read data with URL
                         }
-
-                    });
-                }
-                else{
-                    Toast.makeText(getApplicationContext(), "All fields are required", Toast.LENGTH_SHORT).show();
-                }
+                    }
+                    //End Write and Read data with URL
+                });
             }
-
+            else{
+                Toast.makeText(getApplicationContext(), "All fields are required", Toast.LENGTH_SHORT).show();
+            }
         });
     }
 
@@ -175,6 +173,7 @@ public class Alert extends AppCompatActivity {
         /*Create ArrayList to store vehicle_id to later get vehicle data from DB Query*/
         ArrayList<String> vehicleid = new ArrayList<>();
         ArrayList<String> tagList = new ArrayList<>();
+        ArrayList<String> licenseList = new ArrayList<>();
 
         /*To get the JSON Data from the Query*/
         StringRequest strRequest = new StringRequest(Request.Method.POST,
@@ -191,10 +190,12 @@ public class Alert extends AppCompatActivity {
                             for (int i = 0; i < jsonArray.length(); i++) {
                                 JSONObject jsonObject = jsonArray.getJSONObject(i);
                                 String tag = jsonObject.optString("Tag");
+                                String license = jsonObject.optString("LicensePlate");
                                 String vehicle = jsonObject.optString("Vehicle_Id");
                                 tagList.add(tag);
+                                licenseList.add(license);
                                 vehicleid.add(vehicle);
-                                tagidAdapter = new ArrayAdapter<>(Alert.this, android.R.layout.simple_spinner_item, tagList);
+                                tagidAdapter = new ArrayAdapter<>(Alert.this, android.R.layout.simple_spinner_item, licenseList);
                                 tagidAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                                 tagSpinner.setAdapter(tagidAdapter);
                             }
@@ -233,14 +234,15 @@ public class Alert extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 tagChoice = parent.getItemAtPosition(position).toString();
 
-                if (tagList.contains(tagChoice)) {
-                    int choice = tagList.indexOf(tagChoice);
+                if (licenseList.contains(tagChoice)) {
+                    int choice = licenseList.indexOf(tagChoice);
                     idvehicle = vehicleid.get(choice);
+                    tagid = tagList.get(choice);
                 } else {
                     Toast.makeText(getApplicationContext(), "The tag does not exist", Toast.LENGTH_SHORT).show();
                 }
 
-                String url = "http://10.0.0.14/LoginRegister/getvehicleinfo.php";
+                String url = serverURL+"getvehicleinfo.php";
 
                 /*To get the JSON Data from the Query*/
                 StringRequest strRequest2 = new StringRequest(Request.Method.POST,
@@ -254,13 +256,15 @@ public class Alert extends AppCompatActivity {
                                     jsonArray2 = new JSONArray(response);
                                     for (int i = 0; i < jsonArray2.length(); i++) {
                                         JSONObject jsonObject2 = jsonArray2.getJSONObject(i);
+                                        String license = jsonObject2.optString("LicensePlate");
                                         String vin = jsonObject2.optString("VIN");
                                         String make = jsonObject2.optString("Make");
                                         String model = jsonObject2.optString("Model");
                                         String color = jsonObject2.optString("Color");
+                                        LicensePlate = license;
                                         VIN.setText(vin);
                                         Make.setText(make);
-                                        Model.setText(model );
+                                        Model.setText(model);
                                         Color.setText(color);
                                     }
                                 } catch (JSONException e) {

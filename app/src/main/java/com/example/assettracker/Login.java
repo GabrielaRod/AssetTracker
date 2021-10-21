@@ -22,6 +22,7 @@ public class Login extends AppCompatActivity {
     TextView signUpText;
     ProgressBar progressBar;
     SessionManager sessionManager;
+    String serverURL;
 
 
     @Override
@@ -36,8 +37,10 @@ public class Login extends AppCompatActivity {
         signUpText = findViewById(R.id.signUpText);
         progressBar = findViewById(R.id.progress);
 
-        /*Initializing SessionManager*/
+        /*Global variable to hold the server URL + Initializing SessionManager*/
         sessionManager = new SessionManager(getApplicationContext());
+        serverURL = sessionManager.ServerURL;
+
 
         /*On click listener for the sign up button*/
         signUpText.setOnClickListener(new View.OnClickListener() {
@@ -74,7 +77,7 @@ public class Login extends AppCompatActivity {
                             String[] data = new String[2];
                             data[0] = email;
                             data[1] = password;
-                            PutData putData = new PutData("http://10.0.0.14/LoginRegister/login.php", "POST", field, data); //If using a mobil device it will be visible if they are connected to the same network
+                            PutData putData = new PutData(serverURL+"login.php", "POST", field, data); //If using a mobil device it will be visible if they are connected to the same network
                             if (putData.startPut()) {
                                 if (putData.onComplete()) {
                                     String result = putData.getResult();

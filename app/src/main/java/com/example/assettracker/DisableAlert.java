@@ -40,6 +40,7 @@ public class DisableAlert extends AppCompatActivity {
     RequestQueue requestQueue;
     SessionManager sessionManager;
     TextView Make, Model, Color;
+    String serverURL;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,8 +57,11 @@ public class DisableAlert extends AppCompatActivity {
         sessionManager = new SessionManager(getApplicationContext());
         sessionemail = sessionManager.getEmail();
 
+        /*Global variable to hold the server URL*/
+        serverURL = sessionManager.ServerURL;
+
         /*URL Where I get the tags from*/
-        URL = "http://10.0.0.14/LoginRegister/getalert.php";
+        URL = serverURL+"getalert.php";
 
         /*Initialize the TextViewer*/
         Make = findViewById(R.id.textViewVehicleMake_disable);
@@ -112,7 +116,7 @@ public class DisableAlert extends AppCompatActivity {
                                 data[0] = email;
                                 data[1] = vin;
 
-                                PutData putData = new PutData("http://10.0.0.14/LoginRegister/disable.php", "POST", field, data); //If using a mobil device it will be visible if they are connected to the same network
+                                PutData putData = new PutData(serverURL+"disable.php", "POST", field, data); //If using a mobil device it will be visible if they are connected to the same network
                                 if (putData.startPut()) {
                                     if (putData.onComplete()) {
                                         String result = putData.getResult();

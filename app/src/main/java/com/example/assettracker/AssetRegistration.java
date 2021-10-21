@@ -19,13 +19,14 @@ import com.vishnusivadas.advanced_httpurlconnection.PutData;
 
 public class AssetRegistration extends AppCompatActivity {
 
-        TextInputEditText textInputEditTextVin, textInputEditTextMake, textInputEditTextModel, textInputEditTextYear, textInputEditTextTag;
+        TextInputEditText textInputEditTextLicense, textInputEditTextVin, textInputEditTextModel, textInputEditTextYear, textInputEditTextTag;
         Button buttonSubmit;
         Button buttonCancel;
         ProgressBar progressBar;
         Spinner color, type, brand;
         String typechoice, colorchoice, brandchoice, sessionemail;
         SessionManager sessionManager;
+        String serverURL;
 
 
         @Override
@@ -34,6 +35,7 @@ public class AssetRegistration extends AppCompatActivity {
             setContentView(R.layout.activity_asset_registration);
 
             /*To set the variables for the input data*/
+            textInputEditTextLicense = findViewById(R.id.license);
             textInputEditTextVin = findViewById(R.id.vin);
             textInputEditTextModel = findViewById(R.id.model);
             textInputEditTextYear = findViewById(R.id.year);
@@ -47,6 +49,9 @@ public class AssetRegistration extends AppCompatActivity {
             /*Initializing SessionManager and Get Email*/
             sessionManager = new SessionManager(getApplicationContext());
             sessionemail = sessionManager.getEmail();
+
+            /*Global variable to hold the server URL*/
+            serverURL = sessionManager.ServerURL;
 
             /*color*/
             ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(this, R.array.color, android.R.layout.simple_spinner_item);
@@ -101,7 +106,6 @@ public class AssetRegistration extends AppCompatActivity {
 
             buttonSubmit = findViewById(R.id.submit);
             buttonCancel = findViewById(R.id.cancel);
-            progressBar = findViewById(R.id.progressasset);
 
 
             /*On click listener for the Cancel button in case the user wants to cancel registration*/
@@ -120,7 +124,8 @@ public class AssetRegistration extends AppCompatActivity {
                 public void onClick(View v) {
 
                     /*Getting the data from the input variables*/
-                    String vin, make, model, year, tagid, cartype, carcolor, email;
+                    String license, vin, make, model, year, tagid, cartype, carcolor, email;
+                    license = String.valueOf(textInputEditTextLicense.getText());
                     vin = String.valueOf(textInputEditTextVin.getText());
                     make = String.valueOf(brandchoice);
                     model = String.valueOf(textInputEditTextModel.getText());
@@ -132,7 +137,7 @@ public class AssetRegistration extends AppCompatActivity {
 
 
                     /*Error handling, if the fields are empty it will show Toast*/
-                    if(!vin.equals("") && !make.equals("") && !model.equals("") && !year.equals("") && !carcolor.equals("") && !cartype.equals("") && !tagid.equals("")){
+                    if(!license.equals("") && !vin.equals("") && !make.equals("") && !model.equals("") && !year.equals("") && !carcolor.equals("") && !cartype.equals("") && !tagid.equals("")){
 
                         progressBar.setVisibility(View.VISIBLE);
                         Handler handler = new Handler(Looper.getMainLooper());
@@ -141,29 +146,31 @@ public class AssetRegistration extends AppCompatActivity {
                             public void run() {
                                 //Starting Write and Read data with URL
                                 //Creating array for parameters
-                                String[] field = new String[8];
-                                field[0] = "VIN";
-                                field[1] = "Make";
-                                field[2] = "Model";
-                                field[3] = "Year";
-                                field[4] = "Color";
-                                field[5] = "Type";
-                                field[6] = "Tag";
-                                field[7] = "Email";
+                                String[] field = new String[9];
+                                field[0] = "LicensePlate";
+                                field[1] = "VIN";
+                                field[2] = "Make";
+                                field[3] = "Model";
+                                field[4] = "Year";
+                                field[5] = "Color";
+                                field[6] = "Type";
+                                field[7] = "Tag";
+                                field[8] = "Email";
 
 
                                 //Creating array for data
-                                String[] data = new String[8];
-                                data[0] = vin;
-                                data[1] = make;
-                                data[2] = model;
-                                data[3] = year;
-                                data[4] = carcolor;
-                                data[5] = cartype;
-                                data[6] = tagid;
-                                data[7] = email;
+                                String[] data = new String[9];
+                                data[0] = license;
+                                data[1] = vin;
+                                data[2] = make;
+                                data[3] = model;
+                                data[4] = year;
+                                data[5] = carcolor;
+                                data[6] = cartype;
+                                data[7] = tagid;
+                                data[8] = email;
 
-                                PutData putData = new PutData("http://10.0.0.14/LoginRegister/asset.php", "POST", field, data); //If using a mobil device it will be visible if they are connected to the same network
+                                PutData putData = new PutData(serverURL+"asset.php", "POST", field, data); //If using a mobil device it will be visible if they are connected to the same network
                                 if (putData.startPut()) {
                                     if (putData.onComplete()) {
                                         progressBar.setVisibility(View.GONE);

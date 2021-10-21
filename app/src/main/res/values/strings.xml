@@ -15,7 +15,8 @@
     <string name="signuppassword">Password</string>
     <string name="sign_up">Inscribirse</string>
     <string name="welcome">Bienvenido!</string>
-    <string name="vin">VIN</string>
+    <string name="vin">Matrícula</string>
+    <string name="license">Placa</string>
     <string name="make">Marca</string>
     <string name="model">Modelo</string>
     <string name="year">Año</string>
@@ -143,7 +144,7 @@
     <string name="vehicle_id_alert">Vehicle Id Alert</string>
     <string name="view_map">Ver Mapa</string>
     <string name="disable_alert">Deshabilitar Alerta</string>
-    <string name="alertvin">VIN</string>
+    <string name="alertvin">Matrícula</string>
     <string name="alertmodel">Model</string>
     <string name="alertmake">Make</string>
     <string name="alertcolor">Color</string>

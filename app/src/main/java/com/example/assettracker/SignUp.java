@@ -21,11 +21,17 @@ public class SignUp extends AppCompatActivity {
     Button buttonSignUp;
     TextView textViewLogin;
     ProgressBar progressBar;
+    SessionManager sessionManager;
+    String serverURL;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
+
+        /*Global variable to hold the server URL*/
+        sessionManager = new SessionManager(getApplicationContext());
+        serverURL = sessionManager.ServerURL;
 
         /*To set the variables for the input data*/
         textInputEditTextFirstname = findViewById(R.id.firstname);
@@ -97,7 +103,7 @@ public class SignUp extends AppCompatActivity {
                             data[5] = phonenumber;
                             data[6] = email;
                             data[7] = password;
-                            PutData putData = new PutData("http://10.0.0.14/LoginRegister/signup.php", "POST", field, data); //If using a mobil device it will be visible if they are connected to the same network
+                            PutData putData = new PutData(serverURL+"signup.php", "POST", field, data); //If using a mobil device it will be visible if they are connected to the same network
                             if (putData.startPut()) {
                                 if (putData.onComplete()) {
                                     progressBar.setVisibility(View.GONE);
