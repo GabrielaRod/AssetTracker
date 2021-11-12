@@ -1,6 +1,9 @@
 package com.example.assettracker;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -10,9 +13,14 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
 import com.vishnusivadas.advanced_httpurlconnection.PutData;
 
 public class Login extends AppCompatActivity {
@@ -22,13 +30,18 @@ public class Login extends AppCompatActivity {
     TextView signUpText;
     ProgressBar progressBar;
     SessionManager sessionManager;
-    String serverURL;
+    String token, serverURL;
+    static final String CHANNEL_ID = "assettracker_id";
+    static final String CHANNEL_NAME = "assettracker name";
+    static final String CHANNEL_DESC = "assettracker desc";
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
 
         textInputEditTextEmail = findViewById(R.id.emaillogin);
         textInputEditTextPassword = findViewById(R.id.passwordlogin);
@@ -40,6 +53,29 @@ public class Login extends AppCompatActivity {
         /*Global variable to hold the server URL + Initializing SessionManager*/
         sessionManager = new SessionManager(getApplicationContext());
         serverURL = sessionManager.ServerURL;
+
+
+
+        /**********************FIREBASE****************************/
+        FirebaseInstanceId.getInstance().getInstanceId()
+                .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<InstanceIdResult> task) {
+                        if (task.isSuccessful()){
+                            token = task.getResult().getToken();
+                        } else {
+                            Toast.makeText(Login.this, task.getException().toString(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+        //Creating notification channel for devices on and above Android O
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            NotificationChannel channel = new NotificationChannel(CHANNEL_ID, CHANNEL_NAME, NotificationManager.IMPORTANCE_DEFAULT);
+            channel.setDescription(CHANNEL_DESC);
+            NotificationManager manager = getSystemService(NotificationManager.class);
+            manager.createNotificationChannel(channel);
+        }
+        /*********************************************************/
 
 
         /*On click listener for the sign up button*/
@@ -63,20 +99,22 @@ public class Login extends AppCompatActivity {
                 password = String.valueOf(textInputEditTextPassword.getText());
 
                 /*Error handling, if the fields are empty it will show Toast*/
-                if(!email.equals("") && !password.equals("")){
+                if(!email.equals("") && !password.equals("") && !token.equals("")){
                     Handler handler = new Handler(Looper.getMainLooper());
                     handler.post(new Runnable() {
                         @Override
                         public void run() {
                             //Starting Write and Read data with URL
                             //Creating array for parameters
-                            String[] field = new String[2];
+                            String[] field = new String[3];
                             field[0] = "Email";
                             field[1] = "Password";
+                            field[2] = "Token";
                             //Creating array for data
-                            String[] data = new String[2];
+                            String[] data = new String[3];
                             data[0] = email;
                             data[1] = password;
+                            data[2] = token;
                             PutData putData = new PutData(serverURL+"login.php", "POST", field, data); //If using a mobil device it will be visible if they are connected to the same network
                             if (putData.startPut()) {
                                 if (putData.onComplete()) {

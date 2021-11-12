@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "861073911304",
+    "project_id": "assettracker-b201f",
+    "storage_bucket": "assettracker-b201f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:861073911304:android:8f84422a243cd2dbaa6bbd",
+        "android_client_info": {
+          "package_name": "com.example.assettracker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "861073911304-np12air0esabuc3np5j97hft2656l7ei.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBQXAXd41k1ax_cMgPNdgMOqh78TC1mI_g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "861073911304-np12air0esabuc3np5j97hft2656l7ei.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

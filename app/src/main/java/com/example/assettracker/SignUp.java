@@ -1,6 +1,9 @@
 package com.example.assettracker;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -10,9 +13,14 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
 import com.vishnusivadas.advanced_httpurlconnection.PutData;
 
 public class SignUp extends AppCompatActivity {
@@ -22,7 +30,10 @@ public class SignUp extends AppCompatActivity {
     TextView textViewLogin;
     ProgressBar progressBar;
     SessionManager sessionManager;
-    String serverURL;
+    String token, serverURL;
+    static final String CHANNEL_ID = "assettracker_id";
+    static final String CHANNEL_NAME = "assettracker name";
+    static final String CHANNEL_DESC = "assettracker desc";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +57,27 @@ public class SignUp extends AppCompatActivity {
         buttonSignUp = findViewById(R.id.buttonSignUp);
         textViewLogin = findViewById(R.id.loginText);
         progressBar = findViewById(R.id.progress);
+
+        /**********************FIREBASE****************************/
+        FirebaseInstanceId.getInstance().getInstanceId()
+                .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<InstanceIdResult> task) {
+                        if (task.isSuccessful()){
+                            token = task.getResult().getToken();
+                        } else {
+                            Toast.makeText(SignUp.this, task.getException().toString(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+        //Creating notification channel for devices on and above Android O
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            NotificationChannel channel = new NotificationChannel(CHANNEL_ID, CHANNEL_NAME, NotificationManager.IMPORTANCE_DEFAULT);
+            channel.setDescription(CHANNEL_DESC);
+            NotificationManager manager = getSystemService(NotificationManager.class);
+            manager.createNotificationChannel(channel);
+        }
+        /*********************************************************/
 
         /*On click listener for the Login button in case the user already has an account*/
         textViewLogin.setOnClickListener(new View.OnClickListener() {
@@ -74,7 +106,7 @@ public class SignUp extends AppCompatActivity {
                 password = String.valueOf(textInputEditTextPassword.getText());
 
                 /*Error handling, if the fields are empty it will show Toast*/
-                if(!firstname.equals("") && !lastname.equals("") && !id.equals("") && !address.equals("") && !city.equals("") && !phonenumber.equals("") && !email.equals("") && !password.equals("")){
+                if(!firstname.equals("") && !lastname.equals("") && !id.equals("") && !address.equals("") && !city.equals("") && !phonenumber.equals("") && !email.equals("") && !password.equals("") && !token.equals("")){
 
                     progressBar.setVisibility(View.VISIBLE);
                     Handler handler = new Handler(Looper.getMainLooper());
@@ -83,7 +115,7 @@ public class SignUp extends AppCompatActivity {
                         public void run() {
                             //Starting Write and Read data with URL
                             //Creating array for parameters
-                            String[] field = new String[8];
+                            String[] field = new String[9];
                             field[0] = "FirstName";
                             field[1] = "LastName";
                             field[2] = "DomID";
@@ -92,9 +124,10 @@ public class SignUp extends AppCompatActivity {
                             field[5] = "PhoneNumber";
                             field[6] = "Email";
                             field[7] = "Password";
+                            field[8] = "Token";
 
                             //Creating array for data
-                            String[] data = new String[8];
+                            String[] data = new String[9];
                             data[0] = firstname;
                             data[1] = lastname;
                             data[2] = id;
@@ -103,6 +136,7 @@ public class SignUp extends AppCompatActivity {
                             data[5] = phonenumber;
                             data[6] = email;
                             data[7] = password;
+                            data[7] = token;
                             PutData putData = new PutData(serverURL+"signup.php", "POST", field, data); //If using a mobil device it will be visible if they are connected to the same network
                             if (putData.startPut()) {
                                 if (putData.onComplete()) {
