@@ -7,8 +7,8 @@ public class SessionManager {
 
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
-    //String ServerURL = "http://52.20.133.226/apprequest/";
-    String ServerURL = "http://10.0.0.14/LoginRegister/";
+    String ServerURL = "http://52.20.133.226/apprequest/";
+    //String ServerURL = "http://10.0.0.14/LoginRegister/";
 
     /*Constructor*/
     public SessionManager(Context context){
